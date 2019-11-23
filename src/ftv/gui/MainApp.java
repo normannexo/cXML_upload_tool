@@ -57,7 +57,7 @@ public class MainApp extends JFrame {
 	private File[] files;
 	protected FileTableModel ftm;
 	private JButton btnSend, btnDismiss;
-	private String strUrl;
+	private String strUrl, strProxy;
 	private JLabel label;
 	private JPanel southPane;
 	private String propertiesPath;
@@ -92,6 +92,7 @@ public class MainApp extends JFrame {
 			stream = new BufferedInputStream(new FileInputStream(propertiesPath + "/cxml_tool.properties"));
 			properties.load(stream);
 			strUrl = properties.getProperty("url");
+			strProxy = properties.getProperty("proxyhost");
 			System.out.println(strUrl);
 			try {
 				new URL(strUrl);
@@ -339,7 +340,7 @@ public class MainApp extends JFrame {
 					try {
 						InvoiceFile invFile = alFiles.get(i);
 						// ftm.fireTableDataChanged();
-						PostCXML.send(invFile, strUrl);
+						PostCXML.send(invFile, strUrl, strProxy);
 						// ftm.fireTableDataChanged();
 						// ftm.fireTableCellUpdated(i, 3);
 						// ftm.setValueAt("torben", 1, 1);

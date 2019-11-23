@@ -21,7 +21,7 @@ import ftv.types.InvoiceFile;
 
 public class PostCXML {
 
-	public static String send(InvoiceFile file, String strUrl) throws Exception {
+	public static String send(InvoiceFile file, String strUrl, String strProxy) throws Exception {
 		
 		String ret = "";
 
@@ -34,32 +34,15 @@ public class PostCXML {
 		// Neue URL, gültig ab 30.09.2017
 		//String s = "https://service-2.ariba.com/service/transaction/cxml.asp";
 		System.out.println("Using URL " + strUrl);
-		// URL bis 30.09.2017:
-
-		// String s = "https://service.ariba.com/service/transaction/cxml.asp";
-
-		// String s =
-		// "https://ariba.imark.unitedelectric.com/shopping_cart/custom34.asp";
-		// String s = "https://products3.appliedbiosystems.com/ab/msg/ab";
-		// String s =
-		// "https://demo.kellyeorder.com/woddem/servlet/ProcessPunchOutRequest";
-		// String s = "https://cxml.odt.jamestower.com/Parser.asp";
-
-		/*
-		 * Security.setProperty("http.proxySet","true");
-		 * Security.setProperty("https.proxyPort","80");
-		 * Security.setProperty("https.proxyHost","wwwproxy.schweitzer-online.de");
-		 * Security.setProperty("https.proxySet","true");
-		 * Security.setProperty("http.proxyPort","80");
-		 * Security.setProperty("http.proxyHost","wwwproxy.schweitzer-online.de");
-		 */
+		System.out.println("Using proxy " + strProxy);
+		
 
 		System.setProperty("http.proxySet", "true");
 		System.setProperty("https.proxyPort", "80");
-		System.setProperty("https.proxyHost", "wwwproxy.schweitzer-online.de");
+		System.setProperty("https.proxyHost", strProxy);
 		System.setProperty("https.proxySet", "true");
 		System.setProperty("http.proxyPort", "80");
-		System.setProperty("http.proxyHost", "wwwproxy.schweitzer-online.de");
+		System.setProperty("http.proxyHost", strProxy);
 
 		URL url = new URL(strUrl);
 		URLConnection urlconnection = url.openConnection();
