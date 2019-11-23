@@ -109,6 +109,8 @@ public class PostCXML {
         	if (response.equals("Accepted")) {
         		file.setSent(true);
         		file.setSelected(true);
+        		fileOut.delete();
+        		
         		
         	}
         	System.out.println(ret);
@@ -118,6 +120,7 @@ public class PostCXML {
         } catch (ParserConfigurationException pe) {
         	pe.printStackTrace();
         }
+		
 		
 
 		bufferedreader.close();
