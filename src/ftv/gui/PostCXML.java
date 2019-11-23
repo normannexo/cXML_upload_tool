@@ -31,8 +31,7 @@ public class PostCXML {
 		System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol");
 
 		Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
-		// Neue URL, gültig ab 30.09.2017
-		//String s = "https://service-2.ariba.com/service/transaction/cxml.asp";
+		
 		System.out.println("Using URL " + strUrl);
 		System.out.println("Using proxy " + strProxy);
 		
@@ -47,9 +46,7 @@ public class PostCXML {
 		URL url = new URL(strUrl);
 		URLConnection urlconnection = url.openConnection();
 		urlconnection.setDoOutput(true);
-		//PrintWriter printwriter = new PrintWriter(urlconnection.getOutputStream());
-
-		//FileReader filereader = new FileReader(file);
+		
 		String s2 = "";
 		FileInputStream fileinputstream = new FileInputStream(file.getFile());
 		boolean flag = false;
@@ -78,7 +75,7 @@ public class PostCXML {
 		BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(urlconnection.getInputStream()));
 
 		String s3;
-		// Raja : Added to write the output to a file
+		
 		File fileOut = new File("ResponsePostCXML " + file.getFile().getName() + ".txt");
 		file.setResponseFile(fileOut);
 		FileOutputStream streamOut = new FileOutputStream(fileOut);
@@ -115,14 +112,13 @@ public class PostCXML {
         		
         	}
         	System.out.println(ret);
-        	/*Desktop desktop = Desktop.getDesktop();
-        	desktop.open(fileOut);*/
+        	
         	
         	 
         } catch (ParserConfigurationException pe) {
         	pe.printStackTrace();
         }
-		// End of Adding < by raja >
+		
 
 		bufferedreader.close();
 		return ret;
