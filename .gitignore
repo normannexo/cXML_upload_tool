@@ -1,0 +1,8 @@
+.settings/
+bin/
+.classpath
+.project
+*.txt
+*.xml
+*.cxml
+*.properties
